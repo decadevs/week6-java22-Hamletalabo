@@ -17,7 +17,6 @@ public class Library {
     }
 
     public  List<Book> getBookShelf(){
-        List<Book> bookShelf = new ArrayList<>();
         bookShelf.add(new Book("Principles of Java",  "Paul",3));
         bookShelf.add(new Book("Java OOP",  "Hamlet", 2));
         bookShelf.add(new Book("Introduction to Biology",  "John", 4));

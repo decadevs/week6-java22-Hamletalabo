@@ -14,6 +14,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 
     @Override
+
     public String addLibraryUserToQueue(User user) {
         library.getLibraryUsersOnQueue().add(user);
 
@@ -29,17 +30,15 @@ public class LibraryServiceImpl implements LibraryService {
         return optionalBook;
     }
 
+
     @Override
     public String giveBookBasedOnFifo(String book, List<Book> books) {
-        library.getLibraryUsersOnQueue().forEach(
-                p -> {
-                    if (checkBook(book, books).isPresent()){
-                        System.out.println(book + " is with " + p.getName());
-                    }
-                }
+        library.getLibraryUsersOnQueue().forEach(p ->
+                checkBook(book, books).ifPresent(b ->
+                        System.out.println(book + " is with " + p.getName())
+                )
         );
         return book;
-
     }
 
 
@@ -48,12 +47,10 @@ public class LibraryServiceImpl implements LibraryService {
 
         Collections.sort(library.getLibraryUsersOnQueue(), new RoleComparator());
 
-        library.getLibraryUsersOnQueue().forEach(
-                p -> {
-                    if (checkBook(book, books).isPresent()){
-                        System.out.println(book + " is with " + p.getName());
-                    }
-                }
+        library.getLibraryUsersOnQueue().forEach(p ->
+                checkBook(book, books).ifPresent(b ->
+                        System.out.println(book + " is with " + p.getName())
+                )
         );
         return book;
     }
